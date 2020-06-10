@@ -1,12 +1,14 @@
 const express=require('express');
 const path=require('path')
 const app=express();
+const dotenv=require('dotenv')
 const db=require('./utils/db')
 app.use(express.json());
+dotenv.config({path:'./config.env'})
 
 //port
 db();
-const PORT=5000
+const PORT=process.env.PORT||5000
 const NODE_ENV='production'
 //routes
 app.use('/api',require('./routes/tech'))
